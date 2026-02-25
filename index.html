@@ -1,12 +1,26 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ljubavni Kalkulator</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" type="image/png" sizes="32x32" href="img/heart.png">
+  </head>
+  <body>
+    <div class="container">
+        <div class="card">
+            <h1>Ljubavni Kalkulator</h1>
+            <div class="input-group">
+                <input type="text" id="name1" placeholder="Tvoje ime">
+                <input type="text" id="name2" placeholder="Ime simpatije">
+            </div>
+
+            <button id="calculate-btn">Izračunaj</button>
+
+            <div id="result"></div>
+        </div>
+    </div>
     <script src="js/app.js"></script>
-</body>
+  </body>
 </html>
