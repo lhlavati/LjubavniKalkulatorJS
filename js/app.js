@@ -1,5 +1,3 @@
-const btn = document.getElementById('calculate-btn');
-
 function validateStr(str){
     let checkSpace = false;
     let checkChar = false;
@@ -10,12 +8,41 @@ function validateStr(str){
         if(str[i] === ' '){
             checkSpace = false;
             break;
-        } else {
-            checkSpace = true;
         }
+        checkSpace = true;
     }
 
     return checkChar && checkSpace;
+}
+
+function calcLove(arr){
+    if (arr.length <= 2) {
+        return arr.join("");
+    }
+
+    let nextRow = [];
+    let left = 0;
+    let right = arr.length - 1;
+    let sum;
+
+    while (left <= right) {
+        if (left === right) {
+            nextRow.push(arr[left]);
+        } else {
+            sum = arr[left] + arr[right];
+            
+            if (sum >= 10) {
+                nextRow.push(Math.floor(sum / 10));
+                nextRow.push(sum % 10);
+            } else {
+                nextRow.push(sum);
+            }
+        }
+        left++;
+        right--;
+    }
+
+    return calcLove(nextRow);
 }
 
 function countLetters(str1, str2){
@@ -45,11 +72,10 @@ function countLetters(str1, str2){
             arr2.push(counter2);
             counter2 = 0;
         }
-        console.log(arr1);
-        console.log(arr2);
-        return [arr1, arr2];
+        return [...arr1, ...arr2];
 }
 
+const btn = document.getElementById('calculate-btn');
 btn.addEventListener('click', () => {
     const name1 = document.getElementById('name1').value;
     const name2 = document.getElementById('name2').value;
@@ -61,14 +87,14 @@ btn.addEventListener('click', () => {
     }
 
     if(validateStr(name1) && validateStr(name2)){
-        result.innerHTML = "Bravo!"
-        countLetters(name1, name2)
+        let lovePercentage = countLetters(name1, name2);
+        result.innerHTML = `
+        ${name1} 💘 ${name2}<br>
+        ${calcLove(lovePercentage)}%
+        `;
         return;
     } else {
-        result.innerHTML = "Ponovi!"
+        result.innerHTML = "Unos nije važeći!<br><i>Upišite ime bez razmaka, brojeva i znakova.</i>"
         return;
     }
-
-    
-
 })
