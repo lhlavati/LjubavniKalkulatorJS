@@ -75,4 +75,10 @@ button:hover {
     margin: 20px 0;
     color: #ff4b2b;
     font-weight: bold;
+    font-size: 1.8rem;
+}
+
+#result i {
+    font-weight: normal;
+    font-size: 0.8rem;
 }
